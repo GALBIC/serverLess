@@ -1,0 +1,29 @@
+{
+  "name": "trade-helper",
+  "version": "1.0.0",
+  "description": "I really hope you can cracked it and make a fourtun",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GALBIC/serverLess.git"
+  },
+  "keywords": [
+    "money",
+    "trading",
+    "api",
+    "vercel"
+  ],
+  "author": "braxise",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GALBIC/serverLess/issues"
+  },
+  "homepage": "https://github.com/GALBIC/serverLess#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

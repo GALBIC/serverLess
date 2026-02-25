@@ -1,0 +1,64 @@
+{
+  "binance": {
+    "url": {
+      "spot": "https://api4.binance.com/api/v3/depth?symbol=$$$USDT&limit=#",
+      "linear": "https://fapi.binance.com/fapi/v1/depth?symbol=BTCUSDT&limit=10",
+      "inverse": "https://dapi.binance.com/dapi/v1/depth?symbol=BTCUSDT&limit=10"
+    },
+    "method": "GET",
+    "headers": {},
+    "params": {
+      "symbol": {},
+      "limit": { "des": "1-100=>5, 101-500=>25, 501-1000=>50, 1001-5000=>250" }
+    }
+  },
+  "bybit": {
+    "url": "https://api.bybit.com/v5/market/orderbook?category=$$$$&symbol=$$$$&limit=###",
+    "method": "GET",
+    "headers": {},
+    "params": {
+      "category": { "des": "spot, linear, inverse" },
+      "symbol": {},
+      "limit": { "des": "1-50=>spot, 1-200=>linear&inverse, 1-25=>options" }
+    }
+  },
+  "gate.io": {
+    "url": {
+      "futures": "https://api.gateio.ws/api/v4/futures/usdt/order_book?contract=DOGE_USDT&limit=###",
+      "spot": "https://api.gateio.ws/api/v4/spot/order_book?currency_pair=BTC_USDT&limit=10"
+    },
+    "method": "GET",
+    "headers": {},
+    "params": {
+      "contract": { "des": "e.g., DOGE_USDT" },
+      "limit": { "des": "1-300" },
+      "interval": { "des": "e.g., 0.1, 0.01, 0.001" }
+    }
+  },
+  "coinbase": {
+    "url": {
+      "spot": "https://api.exchange.coinbase.com/products/DOGE-USDT/book?level=3",
+      "futures": ""
+    }
+  },
+  "OKX": {
+    "url": {
+      "spot": "https://www.okx.com/api/v5/market/books?instId=DOGE-USDT&sz=400",
+      "futures": "https://www.okx.com/api/v5/market/books?instId=DOGE-USDT-SWAP&sz=400"
+    },
+    "method": "GET",
+    "headers": {},
+    "params": {
+      "instId": {
+        "des": "e.g., DOGE-USDT for spot, DOGE-USDT-SWAP for futures"
+      },
+      "sz": { "des": "1-400" }
+    },
+    "des": [
+      "price",
+      "size",
+      "is from liquidity",
+      "number of orders at this price level"
+    ]
+  }
+}
