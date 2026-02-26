@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/**/*.js",
+      "src": "api/*.js",
       "use": "@vercel/node"
     }
   ],
@@ -13,11 +13,11 @@
     },
     {
       "src": "/depth/(.*)",
-      "dest": "/api/depth/$1"
+      "dest": "/api/$1"
     }
   ],
   "functions": {
-    "api/**/*.js": {
+    "api/*.js": {
       "maxDuration": 30
     }
   }
