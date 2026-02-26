@@ -112,8 +112,8 @@ app.post("/depth/:mark", async (req, res) => {
           asks = data.result?.a || [];
           bids = data.result?.b || [];
         } else if (name.startsWith("gate-spot")) {
-          asks = data.asks.map((r) => [r.price, r.amount]) || [];
-          bids = data.bids.map((r) => [r.price, r.amount]) || [];
+          asks = data.asks|| [];
+          bids = data.bids|| [];
         } else if (name.startsWith("gate-futures")) {
           asks = data.asks.map((r) => [r.p, r.s]) || [];
           bids = data.bids.map((r) => [r.p, r.s]) || [];
