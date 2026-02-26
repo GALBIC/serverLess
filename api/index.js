@@ -1,5 +1,5 @@
 import express from "express";
-import fs from "fs";
+// import fs from "fs";
 const app = express();
 
 app.use(express.json());
@@ -7,23 +7,23 @@ app.use(express.json());
 app.get("/ping", (req, res) => {
   res.json({ ok: true });
 });
-function logToFile(message) {
-  // Get call stack
-  const stack = new Error().stack.split("\n");
-  // Parse the caller information (index 2 because 0 is Error, 1 is this function)
-  const callerLine = stack[2] || "";
+// function logToFile(message) {
+//   // Get call stack
+//   const stack = new Error().stack.split("\n");
+//   // Parse the caller information (index 2 because 0 is Error, 1 is this function)
+//   const callerLine = stack[2] || "";
 
-  // Extract file and line number (format: at function (file:line:column))
-  const match = callerLine.match(/\(?(.+?):(\d+):\d+\)?$/) || [];
-  const file = match[1] ? path.basename(match[1]) : "unknown";
-  const line = match[2] || "unknown";
+//   // Extract file and line number (format: at function (file:line:column))
+//   const match = callerLine.match(/\(?(.+?):(\d+):\d+\)?$/) || [];
+//   const file = match[1] ? path.basename(match[1]) : "unknown";
+//   const line = match[2] || "unknown";
 
-  const timestamp = new Date().toISOString().replace("T", " ").substring(0, 19);
-  const logEntry = `${timestamp} [${file}:${line}] (${currentChatId || "N/A"})| ${message}\n`;
+//   const timestamp = new Date().toISOString().replace("T", " ").substring(0, 19);
+//   const logEntry = `${timestamp} [${file}:${line}] (${currentChatId || "N/A"})| ${message}\n`;
 
-  // Append to log file
-  fs.appendFileSync(path.join(__dirname, "logs.txt"), logEntry, "utf8");
-}
+//   // Append to log file
+//   fs.appendFileSync(path.join(__dirname, "logs.txt"), logEntry, "utf8");
+// }
 app.post("/depth/:mark", async (req, res) => {
   const { mark } = req.params;
 
@@ -79,13 +79,13 @@ app.post("/depth/:mark", async (req, res) => {
           return { name: name, success: true, data };
         } catch (err) {
           const er = { name: name, success: false, error: err.message };
-          logToFile(JSON.stringify(er));
+          // logToFile(JSON.stringify(er));
 
           return { name: name, success: false, error: JSON.stringify(err) };
         }
       }),
     );
-    fs.writeFileSync("responses.json", JSON.stringify(resss, null, 2));
+    // fs.writeFileSync("responses.json", JSON.stringify(resss, null, 2));
     // ── Collect valid order books ───────────────────────────────────────
     const allAsks = [];
     const allBids = [];
@@ -125,8 +125,6 @@ app.post("/depth/:mark", async (req, res) => {
         console.warn(`Parse error in ${name}: ${parseErr.message}`);
         continue;
       }
-      console.log(name);
-      console.log(asks);
       each[name] = { asks, bids };
       allAsks.push(...asks);
       allBids.push(...bids);
@@ -143,7 +141,7 @@ app.post("/depth/:mark", async (req, res) => {
     let totalBidQty = 0;
     const askMap = new Map();
     const bidMap = new Map();
-    fs.writeFileSync("debug_asks.json", JSON.stringify(allAsks, null, 2));
+    // fs.writeFileSync("debug_asks.json", JSON.stringify(allAsks, null, 2));
     allAsks.forEach(([priceStr, qtyStr]) => {
       const price = Number(priceStr);
       const qty = Number(qtyStr);
