@@ -3,7 +3,7 @@
     "url": {
       "spot": "https://api4.binance.com/api/v3/depth?symbol=$$$USDT&limit=#",
       "linear": "https://fapi.binance.com/fapi/v1/depth?symbol=BTCUSDT&limit=10",
-      "inverse": "https://dapi.binance.com/dapi/v1/depth?symbol=BTCUSDT&limit=10"
+      "inverse": "https://dapi.binance.com/dapi/v1/depth?symbol=BTCUSD_PERP&limit=10"
     },
     "method": "GET",
     "headers": {},
@@ -17,15 +17,15 @@
     "method": "GET",
     "headers": {},
     "params": {
-      "category": { "des": "spot, linear, inverse" },
-      "symbol": {},
-      "limit": { "des": "1-50=>spot, 1-200=>linear&inverse, 1-25=>options" }
+      "category": ["spot", "linear", "inverse"],
+      "symbol": "e.g BTCUSDT for linear, BTCUSD for inverse",
+      "limit": { "des": "1-1000=>linear&inverse," }
     }
   },
   "gate.io": {
     "url": {
-      "futures": "https://api.gateio.ws/api/v4/futures/usdt/order_book?contract=DOGE_USDT&limit=###",
-      "spot": "https://api.gateio.ws/api/v4/spot/order_book?currency_pair=BTC_USDT&limit=10"
+      "futures": "https://api.gateio.ws/api/v4/futures/usdt/order_book?contract=DOGE_USDT&limit=300",
+      "spot": "https://api.gateio.ws/api/v4/spot/order_book?currency_pair=BTC_USDT&limit=300"
     },
     "method": "GET",
     "headers": {},
@@ -35,16 +35,10 @@
       "interval": { "des": "e.g., 0.1, 0.01, 0.001" }
     }
   },
-  "coinbase": {
-    "url": {
-      "spot": "https://api.exchange.coinbase.com/products/DOGE-USDT/book?level=3",
-      "futures": ""
-    }
-  },
   "OKX": {
     "url": {
-      "spot": "https://www.okx.com/api/v5/market/books?instId=DOGE-USDT&sz=400",
-      "futures": "https://www.okx.com/api/v5/market/books?instId=DOGE-USDT-SWAP&sz=400"
+      "spot": "https://www.okx.com/api/v5/market/books?instId=DOGE-USDT&sz=300",
+      "futures": "https://www.okx.com/api/v5/market/books?instId=DOGE-USDT-SWAP&sz=300"
     },
     "method": "GET",
     "headers": {},
